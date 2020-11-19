@@ -1,0 +1,29 @@
+{
+  "name": "tutorial-puppeteer-ultrafastgrid",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://applitools.com",
+  "author": {
+    "name": "Applitools Team",
+    "email": "team@applitools.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/applitools/tutorial-playwright-ultrafastgrid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/applitools/tutorial-playwright-ultrafastgrid/issues"
+  },
+  "dependencies": {
+    "@applitools/eyes-puppeteer": "latest",
+    "mocha": "^8.1.0",
+    "puppeteer": "^5.3.1"
+  },
+  "scripts": {
+    "test": "mocha --no-timeouts 'test/*.test.js'"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=8.9.0"
+  }
+}
