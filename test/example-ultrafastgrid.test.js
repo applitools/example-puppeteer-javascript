@@ -16,12 +16,15 @@ const puppeteer = require('puppeteer')
 
 let eyes;
 
-describe('puppeteer', function () {
+describe('Demo App - Ultrafast Grid - Puppeteer', function () {
     let runner, browser, page
 
     beforeEach(async () => {
         // Initialize the puppeteer browser
-        browser = await puppeteer.launch()
+        browser = await puppeteer.launch({
+            headless: process.env.CI || false
+        });
+
         page = await browser.newPage();
         
         // Create a runner with concurrency of 1
@@ -34,11 +37,8 @@ describe('puppeteer', function () {
         // Initialize the eyes configuration
         const configuration = new Configuration();
 
-        // You can get your api key from the Applitools dashboard
-        // conf.setApiKey('your APPLITOOLS_API_KEY') // use this if you don't have it set in an env variable
-
         // create a new batch info instance and set it to the configuration
-        configuration.setBatch(new BatchInfo('Ultrafast Batch'))
+        configuration.setBatch(new BatchInfo('Ultrafast Batch - Puppeteer'))
 
         // Add browsers with different viewports
         configuration.addBrowser(800, 600, BrowserType.CHROME);
@@ -65,7 +65,7 @@ describe('puppeteer', function () {
         await page.goto('https://demo.applitools.com');
 
         // Call Open on eyes to initialize a test session
-        await eyes.open(page, 'Demo App - Puppeteer', 'Ultrafast grid demo', new RectangleSize(800, 600));
+        await eyes.open(page, 'Demo App', 'Smoke Test', new RectangleSize(800, 600));
 
         // check the login page with fluent api, see more info here
         // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
