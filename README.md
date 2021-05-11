@@ -1,20 +1,14 @@
-### Pre-requisites
+# Applitools Tutorial - Puppeteer
 
-Install Node.js from [here](https://nodejs.org/en/)
+Get started with Applitools visual testing with this example of using the Ultrafast Grid with the Applitools Puppeteer SDK.
 
-### Running the example
+Learn more about how to install and start this project with our [Puppeteer tutorial](https://applitools.com/tutorials/puppeteer.html)!
 
-1. Download the example
-    * Option 1: `git clone https://github.com/applitools/tutorial-puppeteer-ultrafastgrid.git`
-    * Option 2: Download it as a Zip file and extract it
-2. CD into the `tutorial-puppeteer-ultrafastgrid` folder
-3. Change the `APPLITOOLS_API_KEY` with your own.
-    * Login to Applitools > Click on the Person icon > My API Key
-4. run `npm install`
-5. run `npm test`
+<https://applitools.com/tutorials/puppeteer.html>
 
-### Adding to an existing Node.js example
+## More Information
 
-```sh
-npm install "@applitools/eyes-puppeteer" --save-dev
-```
+Learn more about Applitools [Eyes](https://info.applitools.com/ucY77) and the [Ultrafast Test Cloud](https://info.applitools.com/ucY78) at [applitools.com](https://info.applitools.com/ucY76).
+
+More about the Eyes Puppeteer SDK:
+* https://www.npmjs.com/package/@applitools/eyes-puppeteer
