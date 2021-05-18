@@ -65,7 +65,7 @@ describe('Demo App - Ultrafast Grid - Puppeteer', function () {
         await page.goto('https://demo.applitools.com');
 
         // Call Open on eyes to initialize a test session
-        await eyes.open(page, 'Demo App', 'Smoke Test', new RectangleSize(800, 600));
+        await eyes.open(page, 'Demo App - Puppeteer - Ultrafast Grid', 'Smoke Test', new RectangleSize(800, 600));
 
         // check the login page with fluent api, see more info here
         // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
