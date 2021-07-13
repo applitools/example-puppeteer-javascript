@@ -28,7 +28,7 @@ describe('Demo App - Ultrafast Grid - Puppeteer', function () {
         page = await browser.newPage();
         
         // Create a runner with concurrency of 1
-        const runnerOptions = new RunnerOptions().testConcurrency(1)
+        const runnerOptions = new RunnerOptions().testConcurrency(5)
         runner = new VisualGridRunner(runnerOptions);
 
         // Create Eyes object with the runner, meaning it'll be a Visual Grid eyes.
