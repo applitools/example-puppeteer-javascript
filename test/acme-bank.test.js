@@ -135,11 +135,6 @@ describe('ACME BANK', function () {
 
         // Close the browser
         await browser.close()
-
-        // we pass false to this method to suppress the exception that is thrown if we
-        // find visual differences
-        const results = await runner.getAllTestResults(false);
-        console.log(results);
     });
 
     after(async function () {
