@@ -125,7 +125,7 @@ describe('ACME BANK', function () {
 
         // Verify the full main page loaded correctly.
         // This snapshot uses LAYOUT match level to avoid differences in closing time text.
-        await eyes.check('App Window', Target.window().fully());
+        await eyes.check('App Window', Target.window().fully().layout());
     });
 
     afterEach(async function () {
