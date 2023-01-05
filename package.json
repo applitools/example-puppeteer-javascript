@@ -1,6 +1,6 @@
 {
-  "name": "tutorial-puppeteer-ultrafastgrid",
-  "version": "1.0.0",
+  "name": "example-puppeteer-javascript-ufg",
+  "version": "2.0.0",
   "description": "",
   "homepage": "https://applitools.com",
   "author": {
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/applitools/tutorial-playwright-ultrafastgrid.git"
+    "url": "git://github.com/applitools/example-puppeteer-javascript-ufg.git"
   },
   "bugs": {
-    "url": "https://github.com/applitools/tutorial-playwright-ultrafastgrid/issues"
+    "url": "https://github.com/applitools/example-puppeteer-javascript-ufg/issues"
   },
   "dependencies": {},
   "scripts": {
@@ -20,11 +20,8 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@applitools/eyes-puppeteer": "^1.8.5",
-    "mocha": "^9.1.3",
-    "puppeteer": "^11.0.0"
-  },
-  "engines": {
-    "node": ">=12.13.0"
+    "@applitools/eyes-puppeteer": "^1.13.0",
+    "mocha": "^10.2.0",
+    "puppeteer": "^19.4.1"
   }
 }
