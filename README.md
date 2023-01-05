@@ -30,7 +30,7 @@ npm install
 
 When this command installs Puppeteer, it will also automatically install Chromium.
 
-The main test case spec is [`acme-bank.test.ts`](test/acme-bank.test.ts).
+The main test case spec is [`acme-bank.test.js`](test/acme-bank.test.js).
 
 To execute tests, set the `APPLITOOLS_API_KEY` environment variable
 to your [account's API key](https://applitools.com/tutorials/guides/getting-started/registering-an-account),
