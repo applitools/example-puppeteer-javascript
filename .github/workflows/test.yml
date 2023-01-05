@@ -9,6 +9,7 @@ on:
 
 env: 
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  HEADLESS: true
 
 jobs:
   test:
