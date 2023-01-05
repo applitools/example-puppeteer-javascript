@@ -97,7 +97,7 @@ describe('ACME BANK', function () {
         // Open Eyes to start visual testing.
         // It is a recommended practice to set all four inputs:
         await eyes.open(
-            page,                               // WebDriver to "watch"
+            page,                               // The page to "watch"
             'ACME Bank',                        // The name of the app under test
             this.currentTest.fullTitle(),       // The name of the test case
             new RectangleSize(1024, 768)        // The viewport size for the local browser
