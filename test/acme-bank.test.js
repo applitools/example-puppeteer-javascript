@@ -82,7 +82,7 @@ describe('ACME BANK', function () {
     });
 
     beforeEach(async function () {
-        // This method sets up each test with its own ChromeDriver and Applitools Eyes objects.
+        // This method sets up each test with its own browser and Applitools Eyes objects.
         // Even though this test will run visual checkpoints on different browsers in the Ultrafast Grid,
         // it still needs to run the test one time locally to capture snapshots.
 
