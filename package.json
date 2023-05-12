@@ -1,7 +1,7 @@
 {
-  "name": "example-puppeteer-javascript-ufg",
-  "version": "2.0.0",
-  "description": "",
+  "name": "example-puppeteer-javascript",
+  "version": "2.1.0",
+  "description": "An Applitools example project for Puppeteer",
   "homepage": "https://applitools.com",
   "author": {
     "name": "Applitools Team",
@@ -14,14 +14,13 @@
   "bugs": {
     "url": "https://github.com/applitools/example-puppeteer-javascript-ufg/issues"
   },
-  "dependencies": {},
   "scripts": {
     "test": "mocha --no-timeouts 'test/*.test.js'"
   },
   "license": "ISC",
   "devDependencies": {
-    "@applitools/eyes-puppeteer": "^1.13.0",
+    "@applitools/eyes-puppeteer": "^1.16.1",
     "mocha": "^10.2.0",
-    "puppeteer": "^19.4.1"
+    "puppeteer": "^20.2.0"
   }
 }
