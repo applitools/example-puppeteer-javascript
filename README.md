@@ -1,10 +1,9 @@
-# Applitools Example: Puppeteer JavaScript with the Ultrafast Grid
+# Applitools Example: Puppeteer with JavaScript
 
 This is the example project for the [Puppeteer JavaScript tutorial](https://applitools.com/tutorials/quickstart/web/puppeteer).
 It shows how to start automating visual tests
 with [Applitools Eyes](https://applitools.com/platform/eyes/)
-and the [Ultrafast Grid](https://applitools.com/platform/ultrafast-grid/)
-using [Puppeteer](https://pptr.dev/) in JavaScript.
+and [Puppeteer](https://pptr.dev/) in JavaScript.
 
 It uses:
 
@@ -14,6 +13,9 @@ It uses:
 * [Chromium](https://www.chromium.org/chromium-projects/) as the local browser for testing
 * [npm](https://www.npmjs.com/) for dependency management
 * [Applitools Eyes](https://applitools.com/platform/eyes/) for visual testing
+
+It can also run tests with:
+
 * [Applitools Ultrafast Grid](https://applitools.com/platform/ultrafast-grid/) for cross-browser execution
 
 To run this example project, you'll need:
@@ -31,6 +33,8 @@ npm install
 When this command installs Puppeteer, it will also automatically install Chromium.
 
 The main test case spec is [`acme-bank.test.js`](test/acme-bank.test.js).
+By default, the project will run tests with Ultrafast Grid.
+You can change these settings in the test file.
 
 To execute tests, set the `APPLITOOLS_API_KEY` environment variable
 to your [account's API key](https://applitools.com/tutorials/guides/getting-started/registering-an-account),

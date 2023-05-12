@@ -1,7 +1,12 @@
+// This test case spec contains everything needed to run a full visual test against the ACME bank site.
+// It runs the test once locally.
+// If you use the Ultrafast Grid, then it performs cross-browser testing against multiple unique browsers.
+
 'use strict';
 
 const {
     VisualGridRunner,
+    ClassicRunner,
     RunnerOptions,
     Eyes,
     Target,
@@ -16,13 +21,15 @@ const {
 const puppeteer = require('puppeteer')
 
 describe('ACME BANK', function () {
-    // This test case contains everything needed to run a full visual test against the ACME bank site.
-    // It runs the test once locally,
-    // and then it performs cross-browser testing against multiple unique browsers in Applitools Ultrafast Grid.
+
+    // Settings to control how tests are run.
+    // These could be set by environment variables or other input mechanisms.
+    // They are hard-coded here to keep the example project simple.
+    const USE_ULTRAFAST_GRID = true;
+    const HEADLESS = false;
 
     // Test control inputs to read once and share for all tests
     var applitoolsApiKey;
-    var headless;
 
     // Applitools objects to share for all tests
     let batch;
@@ -35,7 +42,7 @@ describe('ACME BANK', function () {
     let eyes;
 
     before(async function () {
-        // This method sets up the configuration for running visual tests in the Ultrafast Grid.
+        // This method sets up the configuration for running visual tests.
         // The configuration is shared by all tests in a test suite, so it belongs in a `before` method.
         // If you have more than one test class, then you should abstract this configuration to avoid duplication. 
     
@@ -44,19 +51,22 @@ describe('ACME BANK', function () {
         // https://applitools.com/tutorials/getting-started/setting-up-your-environment.html
         applitoolsApiKey = process.env.APPLITOOLS_API_KEY;
 
-        // Read headless mode from an environment variable.
-        // Run tests headlessly in CI.
-        headless = (process.env.HEADLESS !== undefined ) && (process.env.HEADLESS.toLowerCase() === 'true');
-    
-        // Create the runner for the Ultrafast Grid.
-        // Concurrency refers to the number of visual checkpoints Applitools will perform in parallel.
-        // Warning: If you have a free account, then concurrency will be limited to 1.
-        runner = new VisualGridRunner(new RunnerOptions().testConcurrency(5));
+        if (USE_ULTRAFAST_GRID) {
+            // Create the runner for the Ultrafast Grid.
+            // Concurrency refers to the number of visual checkpoints Applitools will perform in parallel.
+            // Warning: If you have a free account, then concurrency will be limited to 1.
+            runner = new VisualGridRunner(new RunnerOptions().testConcurrency(5));
+        }
+        else {
+            // Create the classic runner.
+            runner = new ClassicRunner();
+        }
     
         // Create a new batch for tests.
         // A batch is the collection of visual checkpoints for a test suite.
         // Batches are displayed in the Eyes Test Manager, so use meaningful names.
-        batch = new BatchInfo('Applitools Example: Puppeteer JavaScript with the Ultrafast Grid');
+        const runnerName = (USE_ULTRAFAST_GRID) ? 'Ultrafast Grid' : 'Classic runner';
+        batch = new BatchInfo(`Example: Puppeteer JavaScript with the ${runnerName}`);
     
         // Create a configuration for Applitools Eyes.
         config = new Configuration();
@@ -69,25 +79,27 @@ describe('ACME BANK', function () {
         // Set the batch for the config.
         config.setBatch(batch);
     
-        // Add 3 desktop browsers with different viewports for cross-browser testing in the Ultrafast Grid.
-        // Other browsers are also available, like Edge and IE.
-        config.addBrowser(800, 600, BrowserType.CHROME);
-        config.addBrowser(1600, 1200, BrowserType.FIREFOX);
-        config.addBrowser(1024, 768, BrowserType.SAFARI);
-    
-        // Add 2 mobile emulation devices with different orientations for cross-browser testing in the Ultrafast Grid.
-        // Other mobile devices are available, including iOS.
-        config.addDeviceEmulation(DeviceName.Pixel_2, ScreenOrientation.PORTRAIT);
-        config.addDeviceEmulation(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE);
+        // If running tests on the Ultrafast Grid, configure browsers.
+        if (USE_ULTRAFAST_GRID) {
+
+            // Add 3 desktop browsers with different viewports for cross-browser testing in the Ultrafast Grid.
+            // Other browsers are also available, like Edge and IE.
+            config.addBrowser(800, 600, BrowserType.CHROME);
+            config.addBrowser(1600, 1200, BrowserType.FIREFOX);
+            config.addBrowser(1024, 768, BrowserType.SAFARI);
+        
+            // Add 2 mobile emulation devices with different orientations for cross-browser testing in the Ultrafast Grid.
+            // Other mobile devices are available, including iOS.
+            config.addDeviceEmulation(DeviceName.Pixel_2, ScreenOrientation.PORTRAIT);
+            config.addDeviceEmulation(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE);
+        }
     });
 
     beforeEach(async function () {
         // This method sets up each test with its own browser and Applitools Eyes objects.
-        // Even though this test will run visual checkpoints on different browsers in the Ultrafast Grid,
-        // it still needs to run the test one time locally to capture snapshots.
 
         // Initialize the Puppeteer browser.
-        browser = await puppeteer.launch({headless: headless});
+        browser = await puppeteer.launch({headless: HEADLESS});
         page = await browser.newPage();
         
         // Create the Applitools Eyes object connected to the runner and set its configuration.
