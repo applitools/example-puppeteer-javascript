@@ -1,4 +1,4 @@
-# Applitools Example: Puppeteer with JavaScript
+# Applitools Example: Puppeteer in JavaScript
 
 This is the example project for the [Puppeteer JavaScript tutorial](https://applitools.com/tutorials/quickstart/web/puppeteer).
 It shows how to start automating visual tests
