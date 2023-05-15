@@ -26,10 +26,10 @@ describe('ACME BANK', function () {
     // These could be set by environment variables or other input mechanisms.
     // They are hard-coded here to keep the example project simple.
     const USE_ULTRAFAST_GRID = true;
-    const HEADLESS = false;
 
     // Test control inputs to read once and share for all tests
     var applitoolsApiKey;
+    var headless;
 
     // Applitools objects to share for all tests
     let batch;
@@ -50,6 +50,10 @@ describe('ACME BANK', function () {
         // To find your Applitools API key:
         // https://applitools.com/tutorials/getting-started/setting-up-your-environment.html
         applitoolsApiKey = process.env.APPLITOOLS_API_KEY;
+
+        // Read headless mode from an environment variable.
+        // Run tests headlessly in CI.
+        headless = (process.env.HEADLESS !== undefined ) && (process.env.HEADLESS.toLowerCase() === 'true');
 
         if (USE_ULTRAFAST_GRID) {
             // Create the runner for the Ultrafast Grid.
@@ -99,7 +103,7 @@ describe('ACME BANK', function () {
         // This method sets up each test with its own browser and Applitools Eyes objects.
 
         // Initialize the Puppeteer browser.
-        browser = await puppeteer.launch({headless: HEADLESS});
+        browser = await puppeteer.launch({headless: headless});
         page = await browser.newPage();
         
         // Create the Applitools Eyes object connected to the runner and set its configuration.
